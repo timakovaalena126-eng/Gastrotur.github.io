@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Гастротур по Татарстану | Татарская кухня</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fefaf5;
+            color: #2c2418;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header / Hero */
+        .hero {
+            background: linear-gradient(135deg, #2c5f2d 0%, #1e3a2f 100%), url('https://images.unsplash.com/photo-1585937421612-70a008356fbe?q=80&w=1974&auto=format');
+            background-blend-mode: overlay;
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0 120px;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 32px;
+            opacity: 0.95;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #d4a373;
+            color: #2c2418;
+            padding: 12px 28px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid #d4a373;
+            color: #d4a373;
+        }
+
+        .btn-outline:hover {
+            background-color: #d4a373;
+            color: #2c2418;
+        }
+
+        .btn:hover {
+            background-color: #b97f44;
+            transform: translateY(-3px);
+        }
+
+        /* Sections */
+        section {
+            padding: 70px 0;
+            border-bottom: 1px solid #f0e2d0;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.4rem;
+            text-align: center;
+            margin-bottom: 48px;
+            color: #2c5f2d;
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background-color: #d4a373;
+            margin: 12px auto 0;
+        }
+
+        /* Recipe page specific */
+        .recipe-page {
+            padding: 50px 0 70px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 30px;
+            color: #a75d2a;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+
+        .back-link:hover {
+            color: #2c5f2d;
+            transform: translateX(-5px);
+        }
+
+        .recipe-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .recipe-header-image {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 24px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .recipe-header-info h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: #2c5f2d;
+            margin-bottom: 20px;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 20px;
+            margin: 30px 0;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+        }
+
+        .recipe-meta-large {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            background: #f7efe7;
+            padding: 20px;
+            border-radius: 20px;
+            margin: 25px 0;
+        }
+
+        .info-block {
+            background-color: #fff9f0;
+            padding: 32px;
+            border-radius: 32px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+            margin-top: 20px;
+        }
+
+        .info-image {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 24px;
+            margin: 25px 0;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .info-subtitle {
+            font-size: 1.8rem;
+            font-family: 'Playfair Display', serif;
+            color: #2c5f2d;
+            margin: 30px 0 20px;
+        }
+
+        .trends {
+            background: #e8f0e6;
+            border-radius: 32px;
+            padding: 32px;
+            margin-top: 20px;
+        }
+
+        .allergy-note {
+            background: #fff2e0;
+            border-left: 6px solid #d4a373;
+            padding: 14px 20px;
+            margin-top: 30px;
+            border-radius: 16px;
+            font-size: 0.9rem;
+        }
+
+        .footer {
+            background-color: #1e3a2f;
+            color: #efebdd;
+            text-align: center;
+            padding: 40px 0;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .section-title { font-size: 1.8rem; }
+            .container { padding: 0 16px; }
+            .recipe-header {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .recipe-header-image {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ГЛАВНАЯ СТРАНИЦА -->
+    <div id="home-page" class="page active-page">
+        <div class="hero">
+            <div class="container">
+                <h1>Гастротур по традиционной кухне Татарстана</h1>
+                <p>Сайт-путеводитель по истории Татарской кухни и ее рецептам</p>
+                <div class="nav-buttons">
+                    <button onclick="showPage('history')" class="btn btn-outline">История кухни</button>
+                    <button onclick="showPage('beshbarmak')" class="btn">Бешбармак</button>
+                    <button onclick="showPage('echpochmak')" class="btn">Эчпочмак</button>
+                    <button onclick="showPage('chakchak')" class="btn">Чак-чак</button>
+                    <button onclick="showPage('modern')" class="btn btn-outline">Тенденции</button>
+                </div>
+            </div>
+        </div>
+        <main>
+            <section>
+                <div class="container">
+                    <h2 class="section-title">Добро пожаловать</h2>
+                    <div class="info-block" style="text-align: center;">
+                        <p>Исследуйте богатство татарской кулинарной традиции. Выберите рецепт или раздел выше, чтобы узнать историю, секреты приготовления и посмотреть видеоуроки.</p>
+                        <p style="margin-top: 20px;"><strong>Топ-3 блюда по версии наших пользователей:</strong> Бешбармак, Эчпочмак, Чак-чак.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- СТРАНИЦА ИСТОРИИ С ФОТОГРАФИЯМИ -->
+    <div id="history-page" class="page">
+        <div class="container" style="padding-top: 60px;">
+            <button onclick="showPage('home')" class="back-link">← На главную</button>
+            <h1 class="section-title">История татарской кухни</h1>
+            
+            <img class="info-image" src="https://155822.selcdn.ru/upload-8bfeca17cf9a3316f68775e6b5e44259/iblock/0d8/0d8e631c626b118ab8280261343c6815/2024_06_21_115837.png">
+            
+            <div class="info-block">
+                <p>Кухня Татарстана — одна из богатейших в России, сформировавшаяся под влиянием соседних народов (русских, удмуртов, народов Средней Азии) и природной среды на стыке лесного Севера и степного Юга. Изначально кочевой быт диктовал простоту: еду готовили в котлах (казанах), употребляли мясные бульоны, конину и субпродукты. Легендарная колбаса казылык — сырокопчёное лакомство из конины — появилась как способ заготовки мяса впрок.</p>
+            </div>
+            
+          
+            <div class="info-block">
+                <p>С развитием животноводства татарская кухня обогатилась блюдами из баранины, телятины, домашней птицы и разнообразными кисломолочными продуктами (катык, сметана, творог). Благодаря торговле и расширению городов в рацион вошли рис, сухофрукты, пряности, орехи — тогда же татары впервые сварили плов. Картофель появился в середине XIX века и прочно закрепился в блюдах, таких как эчпочмак.</p>
+            </div>
+            
+            <img class="info-image" src="https://eco-buffet.com/wp-content/uploads/2020/10/ghi3.jpg">
+            
+            <div class="info-block">
+                <p><strong>Особенности кухни:</strong> основа — мясо (говядина, баранина, конина). Свинина исключена по религиозным причинам (ислам). Рыба разрешена, если она умерла не естественной смертью. Молоко почти не пьют в чистом виде, зато используют для заправки супов катыком. Животный жир, топлёное масло — важные ингредиенты многих блюд.</p>
+                <p style="margin-top: 15px;">Татарская кухня — это гармония восточного колорита и умеренности, символ гостеприимства, который до сих пор живёт в каждом доме и ресторане Казани.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- СТРАНИЦА БЕШБАРМАК -->
+    <div id="beshbarmak-page" class="page">
+        <div class="container recipe-page">
+            <button onclick="showPage('home')" class="back-link">← На главную</button>
+            <div class="recipe-header">
+                <img class="recipe-header-image" src="https://images.gastronom.ru/b_4-RGYLROrYhSLCFQ3nft8m1s42VU6U-NuwbF6khNY/pr:article-cover-image/g:ce/rs:auto:0:0:0/L2Ntcy9hbGwtaW1hZ2VzLzAwOTI4MTE1LWM5YzEtNDc1Ny1hNmEyLWQxYTJhOTA5Y2ViNi5qcGc.webp" alt="Бешбармак">
+                <div class="recipe-header-info">
+                    <h1>Бешбармак</h1>
+                    <div class="recipe-meta-large">
+                        <span>⏱ 2.5–3 часа</span>
+                        <span>🍽 6–8 порций</span>
+                        <span>🔥 ~520 ккал/порция</span>
+                    </div>
+                </div>
+            </div>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=example1" title="Видеорецепт Бешбармак" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="recipe-meta-large">
+                <div style="flex:1"><strong>📝 Ингредиенты:</strong><br>
+                    Говядина — 2 кг<br>
+                    Мука — 450 г<br>
+                    Яйцо — 1 шт.<br>
+                    Лук — 1 кг<br>
+                    Вода — 2200 мл<br>
+                    Соль, перец, лавровый лист — по вкусу<br>
+                    Зелень — 60 г
+                </div>
+                <div style="flex:2"><strong>👨‍🍳 Приготовление:</strong><br>
+                    1. Мясо варить 2 часа с луком и морковью.<br>
+                    2. Замесить тесто, раскатать 2-3 мм, нарезать ромбиками.<br>
+                    3. Мясо нарезать, лук залить бульоном.<br>
+                    4. Отварить тесто в бульоне 5-7 минут.<br>
+                    5. Выложить: тесто → лук → мясо, посыпать зеленью.
+                </div>
+            </div>
+            <div class="allergy-note">⚠️ Аллергены: глютен, яйца. Проверьте индивидуальную переносимость.</div>
+        </div>
+    </div>
+
+    <!-- СТРАНИЦА ЭЧПОЧМАК -->
+    <div id="echpochmak-page" class="page">
+        <div class="container recipe-page">
+            <button onclick="showPage('home')" class="back-link">← На главную</button>
+            <div class="recipe-header">
+                <img class="recipe-header-image" src="https://e3.edimdoma.ru/system/images/contents/0001/9406/popup/shutterstock_251517019.jpg?1768913583" alt="Эчпочмак">
+                <div class="recipe-header-info">
+                    <h1>Эчпочмак (треугольники)</h1>
+                    <div class="recipe-meta-large">
+                        <span>⏱ 2 часа (с расстойкой)</span>
+                        <span>🍽 12 штук</span>
+                        <span>🔥 ~380 ккал/шт</span>
+                    </div>
+                </div>
+            </div>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=example2" title="Видеорецепт Эчпочмак" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="recipe-meta-large">
+                <div style="flex:1"><strong>📝 Ингредиенты:</strong><br>
+                    Мука — 480 г<br>
+                    Молоко — 200 мл<br>
+                    Яйцо — 2 шт. (1 в тесто, 1 для смазывания)<br>
+                    Сметана — 100 г<br>
+                    Сливочное масло — 30 г<br>
+                    Дрожжи сухие — 7 г<br>
+                    Говядина/курица — 400 г<br>
+                    Картофель — 300 г<br>
+                    Лук — 1 шт.<br>
+                    Бульон — 100 мл
+                </div>
+                <div style="flex:2"><strong>👨‍🍳 Приготовление:</strong><br>
+                    1. Замесить дрожжевое тесто, дать подойти 1.5 ч.<br>
+                    2. Нарезать мясо, картофель, лук кубиками.<br>
+                    3. Раскатать круги, выложить начинку.<br>
+                    4. Сформировать треугольники с отверстием.<br>
+                    5. Выпекать 25 мин, влить бульон, допечь 30 мин.
+                </div>
+            </div>
+            <div class="allergy-note">⚠️ Аллергены: глютен, яйца, молочные продукты.</div>
+        </div>
+    </div>
+
+    <!-- СТРАНИЦА ЧАК-ЧАК -->
+    <div id="chakchak-page" class="page">
+        <div class="container recipe-page">
+            <button onclick="showPage('home')" class="back-link">← На главную</button>
+            <div class="recipe-header">
+                <img class="recipe-header-image" src="https://images.gastronom.ru/ZM2pAgSn8uJVLwRYvCUC0agEraPJOqdQ9Hm63eHMUOg/pr:article-preview-image/g:ce/rs:auto:0:0:0/L2Ntcy9hbGwtaW1hZ2VzL2I5YTdmMGIxLWU5ZjctNDA2Yy04ZDlhLWM1MjVhOGQ3OGM0NC5qcGc.webp" alt="Чак-чак">
+                <div class="recipe-header-info">
+                    <h1>Чак-чак</h1>
+                    <div class="recipe-meta-large">
+                        <span>⏱ 1 час</span>
+                        <span>🍽 8–10 порций</span>
+                        <span>🔥 ~450 ккал/порция</span>
+                    </div>
+                </div>
+            </div>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=example3" title="Видеорецепт Чак-чак" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="recipe-meta-large">
+                <div style="flex:1"><strong>📝 Ингредиенты:</strong><br>
+                    Яйца — 4 шт.<br>
+                    Мука — 350 г<br>
+                    Соль — 1 г<br>
+                    Масло растительное — 500 мл<br>
+                    Мёд — 200 г<br>
+                    Сахар — 100 г
+                </div>
+                <div style="flex:2"><strong>👨‍🍳 Приготовление:</strong><br>
+                    1. Замесить тесто, дать отдохнуть 20 мин.<br>
+                    2. Раскатать, нарезать палочками.<br>
+                    3. Обжарить во фритюре до золотистого цвета.<br>
+                    4. Сварить медовый сироп с сахаром (3-5 мин).<br>
+                    5. Залить сиропом, перемешать, сформовать горкой.
+                </div>
+            </div>
+            <div class="allergy-note">⚠️ Аллергены: глютен, яйца, мёд. Осторожно при аллергии на продукты пчеловодства.</div>
+        </div>
+    </div>
+
+    <!-- СТРАНИЦА СОВРЕМЕННЫЕ ТЕНДЕНЦИИ С ФОТОГРАФИЯМИ -->
+    <div id="modern-page" class="page">
+        <div class="container" style="padding-top: 60px;">
+            <button onclick="showPage('home')" class="back-link">← На главную</button>
+            <h1 class="section-title">Современные тенденции татарской кухни</h1>
+            
+            <img class="info-image" src="https://0d314c86-f76b-45cc-874e-45816116a667.selcdn.net/0dbfd36e-1f90-4023-8e05-0ad062d46493.jpg">
+            
+            <div class="trends">
+                <p>Сегодня шеф-повара по всей России активно возрождают и переосмысливают региональные кулинарные традиции. Рустем Миннуллин — один из ярких представителей новой татарской кухни — отмечает, что аутентичные рецепты становятся ещё актуальнее благодаря локальным продуктам, адаптации под здоровое питание и современным гастрономическим техникам.</p>
+            </div>
+            
+            <img class="info-image" src="https://kazanecc.ru/wp-content/uploads/2023/07/tatar-rest-kazan-01.jpg">
+            
+            <div class="trends">
+                <p>Татарская кухня сегодня — это не только чак-чак на сабантуе, но и изысканные ресторанные интерпретации, фьюжн с европейской подачей, внимание к сезонности. У неё есть все шансы стать одной из самых популярных в России, сохраняя глубокую связь с историей кочевников и исламскими традициями.</p>
+                <p style="margin-top: 16px;"><strong>Наш сайт-путеводитель — шаг к тому, чтобы каждый мог прикоснуться к этому богатству и научиться готовить настоящие бешбармак, эчпочмак и чак-чак на своей кухне.</strong></p>
+            </div>
+            
+            <img class="info-image" src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=1974&auto=format" alt="Современная подача татарских блюд">
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 · Тимакова Алёна, Смирнов Елисей · Колледж туризма и прикладных технологий, Санкт-Петербург</p>
+            <p style="margin-top: 12px; opacity: 0.8;">Проект «Гастротур по традиционной кухне Татарстана» — история, рецепты, видео-инструкции</p>
+            <p style="margin-top: 8px;">Сайт создан в образовательных целях</p>
+        </div>
+    </footer>
+
+    <script>
+        // Стили для страниц (SPA режим)
+        const pages = ['home', 'history', 'beshbarmak', 'echpochmak', 'chakchak', 'modern'];
+        const pageElements = {};
+        
+        pages.forEach(id => {
+            pageElements[id] = document.getElementById(id + '-page');
+        });
+
+        function showPage(pageId) {
+            // Скрыть все страницы
+            for (let id in pageElements) {
+                if (pageElements[id]) {
+                    pageElements[id].classList.remove('active-page');
+                }
+            }
+            // Показать выбранную
+            const target = pageElements[pageId];
+            if (target) {
+                target.classList.add('active-page');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                // fallback на главную
+                pageElements['home'].classList.add('active-page');
+            }
+        }
+
+        // Добавляем CSS для классов .page
+        const style = document.createElement('style');
+        style.textContent = `
+            .page {
+                display: none;
+            }
+            .page.active-page {
+                display: block;
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Поддержка навигации через хэш
+        window.addEventListener('load', () => {
+            const hash = window.location.hash.substring(1);
+            if (hash && pages.includes(hash)) {
+                showPage(hash);
+            }
+        });
+    </script>
+</body>
+</html>
